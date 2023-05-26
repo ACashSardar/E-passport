@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+	
+	<div class="container-fluid p-4 body-section">	
+		<div class="container-fluid d-flex justify-content-center">	
+			<form th:if="${editing==false}" th:action="@{/epassport/offices/}" method="post" th:object="${passportOffice}" enctype="multipart/form-data"
+				 class="border p-3 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center my-0">
+					<p class="fs-4 fw-light">Add new passport office</p>
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{officeName}" id="officeName" placeholder="Enter office name" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{jurisdiction}" id="jurisdiction" placeholder="Enter jurisdiction" required>		
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mb-1">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{address}" id="address" placeholder="Enter office address" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{phoneNumber}" id="jurisdiction" placeholder="Enter phone number" required>		
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-end">
+					<input type="submit" class="btn btn-outline-secondary rounded-0" style="width: 46%; height: 40px" value="+ Create new" >
+				</div>
+			</form>	
+			
+			<form th:if="${editing==true}" th:action="@{'/epassport/offices/update/'+${passportOffice.officeId}}" method="post" th:object="${passportOffice}" enctype="multipart/form-data"
+				 class="border p-3 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center my-0">
+					<p class="fs-4 fw-light">Update passport office</p>
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{officeName}" id="officeName" placeholder="Enter office name" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{jurisdiction}" id="jurisdiction" placeholder="Enter jurisdiction" required>		
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mb-1">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{address}" id="address" placeholder="Enter office address" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{phoneNumber}" id="jurisdiction" placeholder="Enter phone number" required>		
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-end">
+					<input type="submit" class="btn btn-outline-secondary rounded-0" style="width: 46%; height: 40px" value="Update" >
+				</div>
+			</form>	
+
+		</div>
+	</div>
+
+	<div class="container-fluid d-flex justify-content-center">
+		<table class="table table-striped border bg-light" style="width: 50rem; font-size: 12px">
+		  <thead>
+		    <tr class="bg-secondary text-light">
+		      <th scope="col">Office Name</th>
+		      <th scope="col">Jurisdiction</th>
+		      <th scope="col">Address</th>
+		      <th scope="col">Phone Number</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="fw-light" th:each="office : ${officeList}">
+		      <td th:text="${office.officeName}"></td>
+		      <td th:text="${office.jurisdiction}"></td>
+		      <td th:text="${office.address}"></td>
+		      <td th:text="${office.phoneNumber}"></td>
+		      <td class="d-flex">
+		      	<a class="text-decoration-none" th:href="'/epassport/offices/edit/'+${office.officeId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0 me-1">Edit</button>
+		      	</a>
+		      	<a class="text-decoration-none" th:href="'/epassport/offices/delete/'+${office.officeId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0">Delete</button>
+		      	</a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>

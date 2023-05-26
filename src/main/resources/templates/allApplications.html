@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+	<div class="container-fluid d-flex justify-content-center my-3">
+		<h5>All applications</h5>
+	</div>
+	<div class="container-fluid d-flex justify-content-center" >
+		<table class="table table-striped border" style="width: 60rem; font-size: 12px">
+		  <thead>
+		    <tr class="bg-secondary text-light">
+		      <th scope="col">Applicant's Name</th>
+		      <th scope="col">Email Id</th>
+		      <th scope="col">Phone</th>
+		      <th scope="col">Document</th>
+		      <th scope="col">Passport office</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Actions</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="fw-light" th:each="applicationForm : ${applicationFormList}">
+		      <td th:text="${applicationForm.firstName}+' '+${applicationForm.lastName}"></td>
+		      <td th:text="${applicationForm.emailId}"></td>
+		      <td th:text="${applicationForm.telephoneNumber}"></td>
+		      <td><a class="text-secondary" th:href="'documents/'+${applicationForm.document}" >Link</a></td>
+		      <td th:text="${applicationForm.passportOffice.officeName}"></td>
+		      <td th:text="${applicationForm.status}"></td>
+		      <td class="d-flex">
+		      	<a class="text-decoration-none" th:href="'/epassport/applicationForm/view/'+${applicationForm.applicationFormId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0 me-1">View</button>
+		      	</a>
+		      	<a th:if="${applicationForm.status.equals('Pending')}" class="text-decoration-none" th:href="'/epassport/applicationForm/done/'+${applicationForm.applicationFormId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0">Mark as Done</button>
+		      	</a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>

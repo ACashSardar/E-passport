@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+	
+	<div class="container-fluid p-4 body-section">	
+		<div class="container-fluid d-flex justify-content-center my-3">	
+			<form th:if="${editing==false}" th:action="@{/epassport/applicationForm/}" th:object="${applicationForm}" method="post" enctype="multipart/form-data"
+				 class="border p-3 mb-5 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center">
+					<p class="fs-4 fw-light">Passport Application Form</p>	
+				</div>	
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Applicant's Details</p>
+				</div>	
+				 
+ 				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{firstName}" id="firstName" placeholder="Enter your first name" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{lastName}" id="lastName" placeholder="Enter your last name" required>	
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+						<input type="date" class="form-control rounded-0 mb-1 fw-light" th:field="*{dob}" id="dob" value="Enter your DOB" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{placeOfBirth}" id="placeOfBirth" placeholder="Enter your birth place" required>		
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{state}" id="state" placeholder="Enter your state" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{district}" id="district" placeholder="Enter your district" required>			
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{gender}" id="gender" required>
+			              <option value="Male">Male</option>
+			              <option value="Female">Female</option>
+			              <option value="Others">Other</option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{maritalStatus}" id="maritalStatus" required>
+			              <option value="Unmarried">Unmarried</option>
+			              <option value="Married">Married</option>
+						</select>
+					</span>
+				</div> 
+				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{educationQualification}" id="educationQualification" placeholder="Enter your education qualification" required>	
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{employmentType}" id="employmentType" required>
+			              <option value="Unemployed">Unemployed</option>
+			              <option value="Employed">Employed</option>
+			              <option value="Selfemployeed">Selfemployed</option>
+						</select>
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{pan}" id="pan" placeholder="Enter your PAN" required>	
+					</span>
+					<span style="width: 46.5%">
+						<input type="file" class="form-control rounded-0 mb-1 fw-light" name="document" id="document" placeholder="Upload your Document" required>	
+					</span>
+				</div>
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Family Details</p>
+				</div>	
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{fathersName}" id="fathersName" placeholder="Enter your fathers name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{mothersName}" id="mothersName" placeholder="Enter your mothers name" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Address Details</p>	
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{houseNo}" id="houseNo" placeholder="Enter your house no." required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{streetName}" id="streetName" placeholder="Enter your street name" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{city}" id="city" placeholder="Enter your city name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{pinCode}" id="pinCode" placeholder="Enter your pincode" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{telephoneNumber}" id="telephoneNumber" placeholder="Enter your telephone" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{emailId}" id="emailId" placeholder="Enter your email" required>			
+					</span>
+				</div>		
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Reference Details</p>	
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refName}" id="refName" placeholder="Enter reference name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refAddress}" id="refAddress" placeholder="Enter reference address" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refTelephoneNumber}" id="refTelephoneNumber" placeholder="Enter ref. telephone" required>	
+					</span>
+				</div>
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Appointment Details</p>	
+				</div>	
+				<div class="container d-flex justify-content-between mb-2">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{passportOffice}" id="passportOffice" required>
+			              <option th:each="office : ${officeList}" th:value="${office.officeId}" th:text="${office.officeName}"></option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{appointmentSchedule}" id="appointmentSchedule" required>
+			              <option th:each="schedule : ${appointmentScheduleList}" th:value="${schedule.appointmentScheduleId}" th:text="${schedule}"></option>
+						</select>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-end mt-2">
+					<input type="submit" class="btn btn-outline-secondary btn-sm rounded-0" style="width: 47%; height: 40px" value="+ Apply">
+				</div>
+			</form>	
+
+
+			<form th:if="${editing==true}"  th:action="@{'/epassport/applicationForm/update/'+${applicationForm.applicationFormId}}" th:object="${applicationForm}" method="post" enctype="multipart/form-data"
+				 class="border p-3 mb-5 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center">
+					<p class="fs-4 fw-light">Edit Application Form</p>	
+				</div>	
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Applicant's Details</p>
+				</div>	
+				 
+ 				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{firstName}" id="firstName" placeholder="Enter your first name" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{lastName}" id="lastName" placeholder="Enter your last name" required>	
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{dob}" id="dob" value="Enter your DOB">
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{placeOfBirth}" id="placeOfBirth" placeholder="Enter your birth place" required>		
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{state}" id="state" placeholder="Enter your state" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{district}" id="district" placeholder="Enter your district" required>			
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{gender}" id="gender" required>
+			              <option value="Male">Male</option>
+			              <option value="Female">Female</option>
+			              <option value="Others">Other</option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{maritalStatus}" id="maritalStatus" required>
+			              <option value="Unmarried">Unmarried</option>
+			              <option value="Married">Married</option>
+						</select>
+					</span>
+				</div> 
+				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{educationQualification}" id="educationQualification" placeholder="Enter your education qualification" required>	
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{employmentType}" id="employmentType" required>
+			              <option value="Unemployed">Unemployed</option>
+			              <option value="Employed">Employed</option>
+			              <option value="Selfemployeed">Selfemployed</option>
+						</select>
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-left mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{pan}" id="pan" placeholder="Enter your PAN" required>	
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Family Details</p>
+				</div>	
+				
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{fathersName}" id="fathersName" placeholder="Enter your fathers name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{mothersName}" id="mothersName" placeholder="Enter your mothers name" required>			
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Address Details</p>	
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{houseNo}" id="houseNo" placeholder="Enter your house no." required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{streetName}" id="streetName" placeholder="Enter your street name" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{city}" id="city" placeholder="Enter your city name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{pinCode}" id="pinCode" placeholder="Enter your pincode" required>			
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{telephoneNumber}" id="telephoneNumber" placeholder="Enter your telephone" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{emailId}" id="emailId" placeholder="Enter your email" required>			
+					</span>
+				</div>		
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Reference Details</p>	
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refName}" id="refName" placeholder="Enter reference name" required>	
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refAddress}" id="refAddress" placeholder="Enter reference address" required>			
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{refTelephoneNumber}" id="refTelephoneNumber" placeholder="Enter ref. telephone" required>	
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-start">
+					<p class="fs-6 fw-light">Appointment Details</p>	
+				</div>	
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{passportOffice}" id="passportOffice" required>
+			              <option th:each="office : ${officeList}" th:value="${office.officeId}" th:text="${office.officeName}"></option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{appointmentSchedule}" id="appointmentSchedule" required>
+			              <option th:each="schedule : ${appointmentScheduleList}" th:value="${schedule.appointmentScheduleId}" th:text="${schedule}"></option>
+						</select>
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mb-2">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{status}" id="status" required>
+			              <option value="Pending">Pending</option>
+			              <option value="Done">Done</option>
+						</select>
+					</span>
+				</div>
+						
+				<div class="container d-flex justify-content-end mt-2">
+					<input type="submit" class="btn btn-outline-secondary btn-sm rounded-0" style="width: 47%; height: 40px" value="Update">
+				</div>
+			</form>	
+		</div>
+	</div>
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>

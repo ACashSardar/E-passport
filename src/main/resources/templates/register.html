@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+
+	<div class="container-fluid p-4 body-section">	
+		<div class="container-fluid d-flex justify-content-center mt-3">	
+			<form action="#" th:action="@{/register}" th:object="${user}" method="post" enctype="multipart/form-data"
+				 class="border p-3 mb-5 rounded bg-light"  style="width:30rem">
+				 <div class="container d-flex justify-content-center">
+			 		<p class="fs-4 fw-light">Registration Page</p>	
+				 </div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{firstName}" id="firstName" placeholder="Enter your first name" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{lastName}" id="lastName" placeholder="Enter your last name" required>	
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{emailId}" id="emailId" placeholder="Enter your email Id" required>
+					</span>
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{password}" id="password" placeholder="Enter your password" required>		
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-between">
+					<span>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{phoneNo}" id="phoneNo" placeholder="Enter your phone no." required>	
+					</span>
+					<span style="width: 46.5%">
+						<input type="date" class="form-control rounded-0 mb-1 fw-light" th:field="*{dob}" id="dob" placeholder="Enter your DOB" required>			
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{gender}" id="gender" required>
+			              <option value="Male">Male</option>
+			              <option value="Female">Female</option>
+			              <option value="Others">Other</option>
+						</select>
+					</span>
+					<span style="width: 47%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{userType}" id="userType" required>
+			              <option value="U">User</option>
+			              <option value="A">Admin</option>
+						</select>
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between mt-3">
+					<p style="font-size: 12px" class="fw-light mb-0">Already have an account? <a href="/login" class="link-secondary">Login</a></p>
+					<input type="submit" class="btn btn-outline-secondary btn-sm rounded-0" style="width: 47%; height: 40px" value="Register">
+				</div>
+			</form>	
+		</div>
+	</div>
+	
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>

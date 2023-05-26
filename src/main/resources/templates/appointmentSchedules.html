@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+	
+	<div class="container-fluid p-4 body-section">	
+		<div class="container-fluid d-flex justify-content-center">	
+			<form th:if="${editing==false}" th:action="@{/epassport/appointmentSchedules/}" method="post" th:object="${appointmentSchedule}" enctype="multipart/form-data"
+				 class="border p-3 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center my-0">
+					<p class="fs-4 fw-light">Add new appointment schedule</p>
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{monthName}" id="monthName" required>
+			              <option value="January">January</option>
+						  <option value="February">February</option>
+			              <option value="March">March</option>
+						  <option value="April">January</option>
+			              <option value="May">May</option>
+						  <option value="June">June</option>
+			              <option value="July">July</option>
+						  <option value="August">August</option>
+			              <option value="September">September</option>
+						  <option value="October">October</option>
+			              <option value="November">November</option>
+						  <option value="December">December</option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+						<input type="date" class="form-control rounded-0 mb-1 fw-light" th:field="*{date}" id="date" placeholder="Enter Date" required>		
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-start mb-1">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{timeSlot}" id="timeSlot" required>
+			              <option value="9:00am - 11:00am">9:00am - 11:00am</option>
+			              <option value="12:00pm - 01:00pm">12:00pm - 01:00pm</option>
+			              <option value="03:00pm - 05:00pm">03:00pm - 05:00pm</option>
+						</select>
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-end">
+					<input type="submit" class="btn btn-outline-secondary rounded-0" style="width: 46%; height: 40px" value="+ Create new" >
+				</div>
+			</form>	
+			
+			<form th:if="${editing==true}" th:action="@{'/epassport/appointmentSchedules/update/'+${appointmentSchedule.appointmentScheduleId}}" method="post" th:object="${appointmentSchedule}" enctype="multipart/form-data"
+				 class="border p-3 rounded bg-light"  style="width:30rem">
+				<div class="container d-flex justify-content-center my-0">
+					<p class="fs-4 fw-light">Update appointment schedule</p>
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{monthName}" id="monthName" required>
+			              <option value="January">January</option>
+						  <option value="February">February</option>
+			              <option value="March">March</option>
+						  <option value="April">January</option>
+			              <option value="May">May</option>
+						  <option value="June">June</option>
+			              <option value="July">July</option>
+						  <option value="August">August</option>
+			              <option value="September">September</option>
+						  <option value="October">October</option>
+			              <option value="November">November</option>
+						  <option value="December">December</option>
+						</select>
+					</span>
+					<span style="width: 46.5%">
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{date}" id="date" placeholder="Enter Date" required>		
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-start mb-1">
+					<span style="width: 46.5%">
+			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{timeSlot}" id="timeSlot" required>
+			              <option value="9:00am - 11:00am">9:00am - 11:00am</option>
+			              <option value="12:00pm - 01:00pm">12:00pm - 01:00pm</option>
+			              <option value="03:00pm - 05:00pm">03:00pm - 05:00pm</option>
+						</select>
+					</span>
+				</div>
+							
+				<div class="container d-flex justify-content-end">
+					<input type="submit" class="btn btn-outline-secondary rounded-0" style="width: 46%; height: 40px" value="Update" >
+				</div>
+			</form>	
+		</div>
+	</div>
+	
+	<div class="container-fluid d-flex justify-content-center">
+		<table class="table table-striped border" style="width: 50rem; font-size: 12px">
+		  <thead>
+		    <tr class="bg-secondary text-light">
+		      <th scope="col">Month Name</th>
+		      <th scope="col">Available Dates</th>
+		      <th scope="col">Time Slot</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="fw-light" th:each="as : ${appointmentScheduleList}">
+		      <td th:text="${as.monthName}"></td>
+		      <td th:text="${as.date}"></td>
+		      <td th:text="${as.timeSlot}"></td>
+		      <td class="d-flex">
+		      	<a class="text-decoration-none" th:href="'/epassport/appointmentSchedules/edit/'+${as.appointmentScheduleId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0 me-1">Edit</button>
+		      	</a>
+		      	<a class="text-decoration-none" th:href="'/epassport/appointmentSchedules/delete/'+${as.appointmentScheduleId}">
+		      		<button class="btn btn-outline-secondary btn-sm rounded-0">Delete</button>
+		      	</a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>

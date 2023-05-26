@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{base :: header}"></head>
+<body>
+	<div th:insert="~{base :: navbar}"></div>
+		<div class="container-fluid p-4 body-section">	
+		
+		<div class="container-fluid d-flex justify-content-center my-3">	
+			<div style="width: 40rem; font-size: 12px" class="bg-white border p-3">
+				<div class="container text-light bg-secondary px-2 py-1">
+					<b>Personal Details</b>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">First name:</label><b th:text="${applicationForm.firstName}"></b>
+					</span>
+					<span>
+						<label class="me-2">Last name:</label><b th:text="${applicationForm.lastName}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">Date of Birth:</label><b th:text="${applicationForm.dob}"></b>
+					</span>
+					<span>
+						<label class="me-2">Place of Birth:</label><b th:text="${applicationForm.placeOfBirth}"></b>
+					</span>
+				</div>
+				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">Gender:</label><b th:text="${applicationForm.gender}"></b>
+					</span>
+					<span>
+						<label class="me-2">Marital Status:</label><b th:text="${applicationForm.maritalStatus}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">State:</label><b th:text="${applicationForm.state}"></b>
+					</span>
+					<span>
+						<label class="me-2">District:</label><b th:text="${applicationForm.district}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">PAN:</label><b th:text="${applicationForm.pan}"></b>
+					</span>
+					<span>
+						<label class="me-2">Employment Type:</label><b th:text="${applicationForm.employmentType}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<label class="me-2">Education Qualification:</label><b th:text="${applicationForm.educationQualification}"></b>
+					</span>
+					<span>
+						<label class="me-2">Document:<a class="link-dark fw-bold" th:href="'/epassport/applicationForm/documents/'+${applicationForm.document}" >Link</a>
+					</span>
+				</div>
+				
+				
+				<div class="container text-light bg-secondary px-2 py-1">
+					<b>Family Details</b>
+				</div>				
+				
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<label class="me-2">Fathers Name:</label><b th:text="${applicationForm.fathersName}"></b>
+					</span>
+					<span>
+						<label class="me-2">Mothers Name:</label><b th:text="${applicationForm.mothersName}"></b>
+					</span>
+				</div>
+				
+				<div class="container text-light bg-secondary px-2 py-1">
+					<b>Address Details</b>
+				</div>				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">House Number:</label><b th:text="${applicationForm.houseNo}"></b>
+					</span>
+					<span>
+						<label class="me-2">Street Name:</label><b th:text="${applicationForm.streetName}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">City:</label><b th:text="${applicationForm.city}"></b>
+					</span>
+					<span>
+						<label class="me-2">Pin Code:</label><b th:text="${applicationForm.pinCode}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<label class="me-2">Telephone Number:</label><b th:text="${applicationForm.telephoneNumber}"></b>
+					</span>
+					<span>
+						<label class="me-2">Email Id:</label><b th:text="${applicationForm.emailId}"></b>
+					</span>
+				</div>
+				
+				<div class="container text-light bg-secondary px-2 py-1">
+					<b>Reference Details</b>
+				</div>				
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">Reference Name:</label><b th:text="${applicationForm.refName}"></b>
+					</span>
+					<span>
+						<label class="me-2">Reference Address:</label><b th:text="${applicationForm.refAddress}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<label class="me-2">Reference Phone Number:</label><b th:text="${applicationForm.refTelephoneNumber}"></b>
+					</span>
+				</div>
+				
+				<div class="container text-light bg-secondary px-2 py-1">
+					<b>Appointment Details</b>
+				</div>	
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">Passport Office:</label><b th:text="${applicationForm.passportOffice.officeName}"></b>
+					</span>
+					<span>
+						<label class="me-2">Office Address:</label><b th:text="${applicationForm.passportOffice.address}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between">
+					<span>
+						<label class="me-2">Appointment Date:</label><b th:text="${applicationForm.appointmentSchedule.date}"></b>
+					</span>
+					<span>
+						<label class="me-2">Time Slot:</label><b th:text="${applicationForm.appointmentSchedule.timeSlot}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-between mb-2">
+					<span>
+						<label class="me-2">Status:</label><b th:text="${applicationForm.status}"></b>
+					</span>
+				</div>
+				<div class="container d-flex justify-content-end p-0">
+					<a th:if="${showPdf==null}" class="text-decoration-none" th:href="'/epassport/applicationForm/pdf/'+${applicationForm.applicationFormId}"><button class="btn btn-secondary btn-sm rounded-0 me-1">Generate Pdf <i class="fa fa-file-pdf"></i></button></a>
+					<a class="text-decoration-none" th:href="'/epassport/applicationForm/edit/'+${applicationForm.applicationFormId}"><button class="btn btn-outline-secondary btn-sm rounded-0 me-1">Edit</button></a>
+					<a class="text-decoration-none" th:href="'/epassport/applicationForm/delete/'+${applicationForm.applicationFormId}"><button class="btn btn-outline-secondary btn-sm rounded-0">Delete</button></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid d-flex justify-content-center my-3">
+			<embed th:if="${showPdf}" src="/epassport/applicationForm/documents/akashsardar383_application_form.Pdf" width="60%" height="500px"/>
+		</div>
+	</div>
+	<div th:insert="~{base :: footer}"></div>
+</body>
+</html>
