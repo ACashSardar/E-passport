@@ -4,38 +4,34 @@
 <body>
 	<div th:insert="~{base :: navbar}"></div>
 	<div th:if="${param.logout}" class="alert alert-success alert-dismissible fade show m-0 rounded-0">
-		<strong>You have been logged out successfully.</strongs>
+		<strong>You have been logged out successfully.</strong>
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	<div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show m-0 rounded-0">
-		<strong>Bad credentials</strongs>
+		<strong>Bad credentials</strong>
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
-	<div class="container-fluid p-4 body-section" style="height: 75vh">	
-		<div class="container-fluid d-flex justify-content-center mt-5">	
-			<form th:action="@{/login}" method="post" class="border p-3 mb-5 rounded bg-light"  style="width:30rem">
+	
+	<main class="container-fluid " >	
+			<form th:action="@{/login}" method="post" class="border p-3 mb-5 rounded-0 bg-light"  style="width:30rem">
 				<div class="container d-flex justify-content-center my-0">
 					<p class="fs-4 fw-light">Login Page</p>
-				</div>	
-				<div class="container d-flex justify-content-center">
-					<p th:if="${param.loginId}" class="fs-6 fw-bold text-primary" th:text="${'Your Login ID is: '+param.loginId}"></p>
 				</div>
-				<div class="container d-flex justify-content-between mb-3">
+				<div class="container d-flex justify-content-between mb-2">
 					<span>
-						<input type="text" class="form-control rounded-0 mb-1 fw-light" id="loginId" name="username" placeholder="Enter your login ID" required>
+						<input type="text" class="form-control rounded-0 mb-1 fw-light" id="loginId" name="username" placeholder="Enter your Email ID" required>
 					</span>
 					<span>
 						<input type="text" class="form-control rounded-0 mb-1 fw-light" id="password" name="password" placeholder="Enter your password" required>		
 					</span>
 				</div>
-							
 				<div class="container d-flex justify-content-between">
-					<p style="font-size: 12px" class="fw-light mb-0">Don't have an account yet? <a href="/register" class="link-secondary">Register</a></p>
+					<p style="font-size: 14px" class="fw-light mb-0">Don't have an account yet? <a href="/register" class="link-secondary">Register</a></p>
 					<input type="submit" class="btn btn-outline-secondary rounded-0" style="width: 46.5%; height: 40px" value="Login" >
 				</div>
 			</form>	
-		</div>
-	</div>
+	</main>
+	
 	<div th:insert="~{base :: footer}"></div>
 	<div th:insert="~{base :: js-links}"></div>
 </body>

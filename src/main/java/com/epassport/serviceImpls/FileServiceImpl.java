@@ -68,7 +68,7 @@ public class FileServiceImpl implements FileService {
 	public void createPdf(String path, ApplicationForm applicationForm) {
 		
 		User user=applicationForm.getUser();
-		String fullpath=path+File.separator+user.getLoginId()+"_application_form.Pdf";
+		String fullpath=path+File.separator+user.getEmailId()+"_application_form.Pdf";
 		try {
 			PdfWriter writer=new PdfWriter(fullpath);
 			PdfDocument pdfDocument=new PdfDocument(writer);
@@ -111,7 +111,6 @@ public class FileServiceImpl implements FileService {
 					"\n Time Slot: "+applicationForm.getAppointmentSchedule().getTimeSlot()+
 					"\n Status: "+applicationForm.getStatus()
 			);
-			
 			document.add(p1);
 			document.close();
 		} catch (FileNotFoundException e) {

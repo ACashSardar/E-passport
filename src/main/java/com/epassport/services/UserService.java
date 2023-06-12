@@ -11,5 +11,4 @@ public interface UserService {
 	public User updateUser(Integer userId, User user);
 	public void deleteUser(Integer userId);
 	public User getUserByEmailId(String emailId);
-	public User getUserByLoginId(String loginId);
 }

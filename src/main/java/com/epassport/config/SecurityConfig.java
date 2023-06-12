@@ -44,6 +44,7 @@ public class SecurityConfig {
 		return authenticationProvider;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Bean
 	public SecurityFilterChain securityfilterChain(HttpSecurity http) throws Exception {
 		http
@@ -57,7 +58,7 @@ public class SecurityConfig {
 				.requestMatchers(WHITE_LIST)
 				.permitAll()
 				.requestMatchers(ADMIN_ACCESS)
-				.hasAuthority("A")
+				.hasAuthority("Admin")
 				.anyRequest()
 				.authenticated()
 				.and()

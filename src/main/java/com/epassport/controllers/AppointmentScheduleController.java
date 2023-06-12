@@ -31,7 +31,7 @@ public class AppointmentScheduleController {
 	@GetMapping
 	public ModelAndView getAppointmentSchedulePage(Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		AppointmentSchedule appointmentSchedule=new AppointmentSchedule();
 		ModelAndView mv=new ModelAndView("appointmentSchedules");
 		List<AppointmentSchedule> appointmentScheduleList=appointmentScheduleService.getAllAppointmentSchedules();
@@ -57,7 +57,7 @@ public class AppointmentScheduleController {
 	@GetMapping("edit/{appointmentScheduleId}")
 	public ModelAndView editAppointmentSchedule(@PathVariable("appointmentScheduleId") Integer appointmentScheduleId, Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		AppointmentSchedule appointmentSchedule=appointmentScheduleService.getAppointmentSchedule(appointmentScheduleId);
 		ModelAndView mv=new ModelAndView("appointmentSchedules");
 		List<AppointmentSchedule> appointmentScheduleList=appointmentScheduleService.getAllAppointmentSchedules();

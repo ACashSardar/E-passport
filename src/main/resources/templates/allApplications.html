@@ -3,11 +3,11 @@
 <head th:insert="~{base :: header}"></head>
 <body>
 	<div th:insert="~{base :: navbar}"></div>
-	<div class="container-fluid d-flex justify-content-center my-3">
-		<h5>All applications</h5>
-	</div>
-	<div class="container-fluid d-flex justify-content-center" >
-		<table class="table table-striped border" style="width: 60rem; font-size: 12px">
+	<main class="container-fluid" >
+		<div class="container-fluid d-flex justify-content-center my-3">
+			<h5>All applications</h5>
+		</div>
+		<table class="table table-striped border" style="width: 60rem; font-size: 14px">
 		  <thead>
 		    <tr class="bg-secondary text-light">
 		      <th scope="col">Applicant's Name</th>
@@ -19,6 +19,7 @@
 		      <th scope="col">Actions</th>
 		    </tr>
 		  </thead>
+		  
 		  <tbody>
 		    <tr class="fw-light" th:each="applicationForm : ${applicationFormList}">
 		      <td th:text="${applicationForm.firstName}+' '+${applicationForm.lastName}"></td>
@@ -37,8 +38,23 @@
 		      </td>
 		    </tr>
 		  </tbody>
+		  
+		  <tbody th:if="${applicationFormList.size()==0}">
+		  	<tr>
+		  		<td class="fw-bold text-secondary">List of applications is currently empty!</td>
+		  		<td></td>
+		  		<td></td>
+		  		<td></td>
+		  		<td></td>
+		  		<td></td>
+		  		<td></td>
+		  	</tr>
+		  </tbody>
+		  
+		  
 		</table>
-	</div>
+	</main>
+	
 	<div th:insert="~{base :: footer}"></div>
 </body>
 </html>

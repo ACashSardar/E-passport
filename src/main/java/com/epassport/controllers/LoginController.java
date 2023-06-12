@@ -24,8 +24,8 @@ public class LoginController {
 	@GetMapping("/")
 	public ModelAndView home(Principal principal) {
 		if(principal!=null) {
-			User loggedInUser=userService.getUserByLoginId(principal.getName());
-			if(loggedInUser.getUserType().equals("A")) {
+			User loggedInUser=userService.getUserByEmailId(principal.getName());
+			if(loggedInUser.getUserType().equals("Admin")) {
 				return new ModelAndView("redirect:/epassport/applicationForm/all");
 			}
 			else if(loggedInUser.getApplicationForm()!=null) {

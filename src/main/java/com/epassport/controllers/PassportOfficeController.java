@@ -30,7 +30,7 @@ public class PassportOfficeController {
 	@GetMapping
 	public ModelAndView getOfficePage(Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		PassportOffice passportOffice=new PassportOffice();
 		ModelAndView mv=new ModelAndView("offices");
 		List<PassportOffice> officeList=passportOfficeService.getAllPassportOffices();
@@ -56,7 +56,7 @@ public class PassportOfficeController {
 	@GetMapping("edit/{officeId}")
 	public ModelAndView editOffice(@PathVariable("officeId") Integer officeId, Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		ModelAndView mv=new ModelAndView("offices");
 		PassportOffice passportOffice=passportOfficeService.getPassportOffice(officeId);
 		List<PassportOffice> officeList=passportOfficeService.getAllPassportOffices();

@@ -20,27 +20,28 @@
 </head>
 <body>
 	<nav th:fragment="navbar">
-		<div class="d-flex text-secondary bg-light border-bottom px-3 py-2">
-			<img alt="" class="me-2" src="https://e7.pngegg.com/pngimages/146/141/png-clipart-black-lion-logo-government-of-india-west-bengal-ministry-of-defence-directorate-of-municipal-administration-ashok-stambh-white-mammal.png" style="height: 3.3rem; width: 3.3rem">
+		<div class="d-flex text-light bg-secondary border-bottom px-3 py-2">
+		<!-- <img alt="" class="me-2" src="https://e7.pngegg.com/pngimages/146/141/png-clipart-black-lion-logo-government-of-india-west-bengal-ministry-of-defence-directorate-of-municipal-administration-ashok-stambh-white-mammal.png" style="height: 3.3rem; width: 3.3rem">  -->
+			<img alt="" class="me-2" src="https://cdn-icons-png.flaticon.com/512/8863/8863767.png" style="height: 3.3rem; width: 3.3rem">
 			<span class="d-flex flex-column                                                                                                                                                                                                                                                                    ">
 				<label class="fs-4 mb-0">E-Passport application</label>
 				<label style="font-size: 10px">Ministry of External Affairs, Government of India.</label>
 			</span>
 		</div>
-		<div class="fw-light text-end text-bold bg-light border-bottom py-1 px-3" style="font-size: 12px">
+		<div class="fw-light text-end text-bold  border-bottom py-1 px-3" style="font-size: 15px">
 			<a th:if="${loggedInUser==null}" href="/login" class="link-dark text-decoration-none me-2">Login <i class="fa fa-sign-in"></i></a>
 			<a th:if="${loggedInUser==null}" href="/register" class="link-dark text-decoration-none me-2">Sign-up <i class="fa fa-user-plus"></i></a>
 			<a th:if="${loggedInUser!=null}" href="/logout" class="link-dark text-decoration-none me-2">Logout <i class="fa fa-sign-out"></i></a>
-			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('U') && loggedInUser.applicationForm==null}"  href="/epassport/applicationForm/" class="link-dark text-decoration-none me-2">Application form <i class="fa fa-check-square"></i></a>
+			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('User') && loggedInUser.applicationForm==null}"  href="/epassport/applicationForm/" class="link-dark text-decoration-none me-2">Application form <i class="fa fa-check-square"></i></a>
 			<a th:if="${loggedInUser!=null && loggedInUser.applicationForm!=null}" th:href="'/epassport/applicationForm/view/'+${loggedInUser.applicationForm.applicationFormId}" class="link-dark text-decoration-none me-2">My application <i class="fa fa-check-square"></i></a>
-			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('A')}" href="/epassport/applicationForm/all" class="link-dark text-decoration-none me-2">All applications <i class="fa fa-check-square"></i></a>
-			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('A')}" href="/epassport/offices/" class="link-dark text-decoration-none me-2">Offices <i class="fa fa-building"></i></a>
-			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('A')}" href="/epassport/appointmentSchedules/" class="link-dark text-decoration-none">Appointment schedules <i class="fa fa-clock"></i></a>
+			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('Admin')}" href="/epassport/applicationForm/all" class="link-dark text-decoration-none me-2">All applications <i class="fa fa-check-square"></i></a>
+			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('Admin')}" href="/epassport/offices/" class="link-dark text-decoration-none me-2">Offices <i class="fa fa-building"></i></a>
+			<a th:if="${loggedInUser!=null && loggedInUser.userType.equals('Admin')}" href="/epassport/appointmentSchedules/" class="link-dark text-decoration-none">Appointment schedules <i class="fa fa-clock"></i></a>
 		</div>
 	</nav>
 	
 	<footer th:fragment="footer" class="bg-secondary">
-		<div style="font-size: 12px" class="fw-light text-center text-light p-4">Developed by Akash Sardar, 2023</div>
+		<div style="font-size: 15px" class="fw-light text-center text-light p-4">Developed by Akash Sardar, 2023</div>
 	</footer>
 	
 	<div th:fragment="js-links">

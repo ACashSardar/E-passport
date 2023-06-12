@@ -16,12 +16,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	UserRepository userRepository;
-	
-	@Override
-	public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-		Optional<User> user = userRepository.findByLoginId(loginId);
-		return user.map(CustomUserDetails::new)
-				.orElseThrow(() -> new UsernameNotFoundException("user with loginId=" + loginId + " not found."));
-	}
 
+	@Override
+	public UserDetails loadUserByUsername(String emailId) throws UsernameNotFoundException {
+		Optional<User> user = userRepository.findByEmailId(emailId);
+		return user.map(CustomUserDetails::new)
+				.orElseThrow(() -> new UsernameNotFoundException("user with emailId=" + emailId + " not found."));
+	}
 }

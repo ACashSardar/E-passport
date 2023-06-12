@@ -58,7 +58,7 @@ public class ApplicationFormController {
 	@GetMapping
 	public ModelAndView getApplicationForm(Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		ApplicationForm applicationForm=new ApplicationForm();
 		List<PassportOffice> officeList=passportOfficeService.getAllPassportOffices();
 		List<AppointmentSchedule> appointmentScheduleList=appointmentScheduleService.getAllAppointmentSchedules();
@@ -107,7 +107,7 @@ public class ApplicationFormController {
 		) {
 		
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		
 		ApplicationForm applicationForm=new ApplicationForm();
 
@@ -161,7 +161,7 @@ public class ApplicationFormController {
 	@GetMapping("all")
 	public ModelAndView getAllApplications(Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		List<ApplicationForm> applicationFormList=applicationFormService.getAllApplicationForms();
 		ModelAndView mv=new ModelAndView("allApplications");
 		mv.addObject("applicationFormList", applicationFormList);
@@ -172,7 +172,7 @@ public class ApplicationFormController {
 	@GetMapping("view/{applicationFormId}")
 	public ModelAndView viewSubmittedApplicationForm(@PathVariable("applicationFormId") Integer applicationFormId, Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		ApplicationForm applicationForm=applicationFormService.getApplicationForm(applicationFormId);
 		ModelAndView mv=new ModelAndView("submittedForm");
 		mv.addObject("applicationForm", applicationForm);
@@ -183,7 +183,7 @@ public class ApplicationFormController {
 	@GetMapping("edit/{applicationFormId}")
 	public ModelAndView editApplicationForm(@PathVariable("applicationFormId") Integer applicationFormId, Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		ApplicationForm applicationForm=applicationFormService.getApplicationForm(applicationFormId);
 		List<PassportOffice> officeList=passportOfficeService.getAllPassportOffices();
 		List<AppointmentSchedule> appointmentScheduleList=appointmentScheduleService.getAllAppointmentSchedules();
@@ -232,7 +232,7 @@ public class ApplicationFormController {
 			Principal principal
 		) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		
 		ApplicationForm applicationForm=new ApplicationForm();
 
@@ -299,7 +299,7 @@ public class ApplicationFormController {
 	@GetMapping("pdf/{applicationFormId}")
 	public ModelAndView createPdf(@PathVariable("applicationFormId") Integer applicationFormId, Principal principal) {
 		User loggedInUser=null;
-		if(principal!=null) loggedInUser=userService.getUserByLoginId(principal.getName());
+		if(principal!=null) loggedInUser=userService.getUserByEmailId(principal.getName());
 		
 		ApplicationForm applicationForm=applicationFormService.getApplicationForm(applicationFormId);
 		fileService.createPdf(path, applicationForm);

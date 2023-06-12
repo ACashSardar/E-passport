@@ -24,11 +24,8 @@ public class RegisterController {
 	
 	@PostMapping("register")
 	public ModelAndView registerUser(@ModelAttribute User user) {
-		String loginId=user.getEmailId().split("@")[0];
-		user.setLoginId(loginId);		
 		userService.saveUser(user);
-		
-		return new ModelAndView("redirect:/epassport/login?loginId="+loginId);
+		return new ModelAndView("redirect:/epassport/login");
 	}
 	
 }
