@@ -26,7 +26,7 @@
 				</div>
 				
 				<div class="container d-flex justify-content-between">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 						<input type="date" class="form-control rounded-0 mb-1 fw-light" th:field="*{dob}" id="dob" value="Enter your DOB" required>
 					</span>
 					<span>
@@ -44,14 +44,14 @@
 				</div>
 				
 				<div class="container d-flex justify-content-between">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{gender}" id="gender" required>
 			              <option value="Male">Male</option>
 			              <option value="Female">Female</option>
 			              <option value="Others">Other</option>
 						</select>
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{maritalStatus}" id="maritalStatus" required>
 			              <option value="Unmarried">Unmarried</option>
 			              <option value="Married">Married</option>
@@ -63,7 +63,7 @@
 					<span>
 						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{educationQualification}" id="educationQualification" placeholder="Enter your education qualification" required>	
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{employmentType}" id="employmentType" required>
 			              <option value="Unemployed">Unemployed</option>
 			              <option value="Employed">Employed</option>
@@ -76,7 +76,7 @@
 					<span>
 						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{pan}" id="pan" placeholder="Enter your PAN" required>	
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 						<input type="file" class="form-control rounded-0 mb-1 fw-light" name="document" id="document" placeholder="Upload your Document" required>	
 					</span>
 				</div>
@@ -138,19 +138,19 @@
 					<p class="fs-6 fw-light">Appointment Details</p>	
 				</div>	
 				<div class="container d-flex justify-content-between mb-2">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{passportOffice}" id="passportOffice" required>
 			              <option th:each="office : ${officeList}" th:value="${office.officeId}" th:text="${office.officeName}"></option>
 						</select>
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{appointmentSchedule}" id="appointmentSchedule" required>
 			              <option th:each="schedule : ${appointmentScheduleList}" th:value="${schedule.appointmentScheduleId}" th:text="${schedule}"></option>
 						</select>
 					</span>
 				</div>
 				<div class="container d-flex justify-content-end my-2">
-					<input type="submit" class="btn btn-outline-secondary fw-bold btn-sm rounded-0" style="width: 45.5%; height: 40px" value="+ Apply">
+					<input type="submit" class="btn btn-outline-secondary fw-bold btn-sm rounded-0" style="width: 44.5%; height: 40px" value="+ Apply">
 				</div>
 			</form>	
 
@@ -175,7 +175,7 @@
 				</div>
 				
 				<div class="container d-flex justify-content-between">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{dob}" id="dob" value="Enter your DOB">
 					</span>
 					<span>
@@ -193,14 +193,14 @@
 				</div>
 				
 				<div class="container d-flex justify-content-between">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{gender}" id="gender" required>
 			              <option value="Male">Male</option>
 			              <option value="Female">Female</option>
 			              <option value="Others">Other</option>
 						</select>
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{maritalStatus}" id="maritalStatus" required>
 			              <option value="Unmarried">Unmarried</option>
 			              <option value="Married">Married</option>
@@ -212,7 +212,7 @@
 					<span>
 						<input type="text" class="form-control rounded-0 mb-1 fw-light" th:field="*{educationQualification}" id="educationQualification" placeholder="Enter your education qualification" required>	
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{employmentType}" id="employmentType" required>
 			              <option value="Unemployed">Unemployed</option>
 			              <option value="Employed">Employed</option>
@@ -291,12 +291,12 @@
 				</div>	
 				
 				<div class="container d-flex justify-content-between">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{passportOffice}" id="passportOffice" required>
 			              <option th:each="office : ${officeList}" th:value="${office.officeId}" th:text="${office.officeName}"></option>
 						</select>
 					</span>
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{appointmentSchedule}" id="appointmentSchedule" required>
 			              <option th:each="schedule : ${appointmentScheduleList}" th:value="${schedule.appointmentScheduleId}" th:text="${schedule}"></option>
 						</select>
@@ -304,7 +304,7 @@
 				</div>
 				
 				<div class="container d-flex justify-content-between mb-2">
-					<span style="width: 45.5%">
+					<span style="width: 44.5%">
 			            <select  class="form-select rounded-0 mb-1 fw-light" th:field="*{status}" id="status" required>
 			              <option value="Pending">Pending</option>
 			              <option value="Done">Done</option>
@@ -313,10 +313,9 @@
 				</div>
 						
 				<div class="container d-flex justify-content-end mt-2">
-					<input type="submit" class="btn btn-outline-secondary fw-bold btn-sm rounded-0" style="width: 45.5%; height: 40px" value="Update">
+					<input type="submit" class="btn btn-outline-secondary fw-bold btn-sm rounded-0" style="width: 44.5%; height: 40px" value="Update">
 				</div>
 			</form>	
-		</div>
 	</div>
 	<div th:insert="~{base :: footer}"></div>
 </body>
